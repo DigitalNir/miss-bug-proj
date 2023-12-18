@@ -1,0 +1,30 @@
+[
+  {
+    "_id": "def456",
+    "title": "Login page not loading",
+    "description": "The login page remains blank on initial load for some users.",
+    "severity": 2,
+    "createdAt": 1543108360554
+  },
+  {
+    "_id": "ghi789",
+    "title": "Report generation fails",
+    "description": "Generating reports results in an error for data sets larger than 1,000 items.",
+    "severity": 1,
+    "createdAt": 1544109361654
+  },
+  {
+    "_id": "jkl012",
+    "title": "Email notifications not being sent",
+    "description": "Users are not receiving email notifications for updates on their submitted bugs.",
+    "severity": 2,
+    "createdAt": 1545110362754
+  },
+  {
+    "_id": "mno345",
+    "title": "User profile image upload error",
+    "description": "Uploading a profile image fails intermittently for some users.",
+    "severity": 3,
+    "createdAt": 1546111363854
+  }
+]
