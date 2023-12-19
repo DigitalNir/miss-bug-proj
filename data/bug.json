@@ -1,58 +1,66 @@
 [
   {
+    "title": "Updated Email Issue",
+    "description": "Updated description",
+    "severity": "3",
+    "createdAt": "2023-12-19T20:53:17.975Z",
+    "labels": ["Communication", "High Priority"],
+    "_id": "vVyzY"
+  },
+  {
     "_id": "h04H4",
     "title": "bugggg",
     "description": "3",
     "severity": "3",
-    "createdAt": "2023-12-19T00:09:24.426Z"
+    "createdAt": "2023-12-19T00:09:24.426Z",
+    "labels": ["General", "Low Priority"]
   },
   {
     "_id": "PJHgE",
     "title": "moshe",
     "description": "ssd",
     "severity": "33",
-    "createdAt": "2023-12-19T00:08:40.496Z"
-  },
-  {
-    "_id": "def456",
-    "title": "Login page not loading",
-    "description": "The login page remains blank on initial load for some users.",
-    "severity": 2,
-    "createdAt": 1543108360554
+    "createdAt": "2023-12-19T00:08:40.496Z",
+    "labels": ["UI", "Critical"]
   },
   {
     "_id": "jkl012",
     "title": "Email notifications not being sent",
     "description": "Users are not receiving email notifications for updates on their submitted bugs.",
     "severity": 2,
-    "createdAt": 1545110362754
+    "createdAt": 1545110362754,
+    "labels": ["Notifications", "User Experience"]
   },
   {
     "_id": "opq678",
     "title": "Search function returns incorrect results",
     "description": "The search feature provides irrelevant results when querying with specific keywords.",
     "severity": "5",
-    "createdAt": "2023-12-19T00:03:25.909Z"
+    "createdAt": "2023-12-19T00:03:25.909Z",
+    "labels": ["Search", "Functionality"]
   },
   {
     "_id": "rst910",
     "title": "Memory leak in data processing module",
     "description": "The data processing module causes a significant memory leak after extended use.",
     "severity": 1,
-    "createdAt": 1548103565054
+    "createdAt": 1548103565054,
+    "labels": ["Performance", "Memory Management"]
   },
   {
     "_id": "uvw111",
     "title": "Mobile app crashes on startup",
     "description": "The mobile application crashes immediately after launch on some older Android devices.",
     "severity": "3333",
-    "createdAt": "2023-12-19T00:07:34.864Z"
+    "createdAt": "2023-12-19T00:07:34.864Z",
+    "labels": ["Mobile", "Stability", "Dashboard"]
   },
   {
     "_id": "xyz222",
     "title": "Inconsistent UI rendering in the dashboard",
     "description": "Users experience inconsistent UI elements in the dashboard view, particularly in the graphs section.",
     "severity": 2,
-    "createdAt": 1550105765254
+    "createdAt": 1550105765254,
+    "labels": ["Dashboard", "UI/UX"]
   }
 ]

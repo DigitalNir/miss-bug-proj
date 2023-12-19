@@ -47,7 +47,14 @@ function save(bug) {
 }
 
 function getEmptyBug(title = '', description = '', severity = 0) {
-  return { _id: '', title, description, severity, createdAt: Date.now() }
+  return {
+    _id: '',
+    title,
+    description,
+    severity,
+    createdAt: Date.now(),
+    labels,
+  }
 }
 
 function getDefaultBugFilter() {

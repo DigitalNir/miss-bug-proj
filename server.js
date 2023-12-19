@@ -8,6 +8,7 @@ const app = express()
 // Express Config:
 app.use(express.static('public'))
 app.use(cookieParser())
+app.use(express.json())
 
 // app.get('/', (req, res) => res.send('Hello there'))
 
@@ -19,8 +20,23 @@ app.listen(port, () =>
 // Express Routing:
 // Get Bugs (READ)
 app.get('/api/bug', (req, res) => {
+  const filterBy = {
+    title: req.query.title || '',
+    severity: req.query.severity || 0,
+    pageIdx: req.query.pageIdx,
+    labels: req.query.labels,
+  }
+
+  // Check if labels exist and split into an array if it's a string
+  if (req.query.labels) {
+    filterBy.labels =
+      typeof req.query.labels === 'string'
+        ? req.query.labels.split(',')
+        : req.query.labels
+  }
+
   bugService
-    .query()
+    .query(filterBy)
     .then((bugs) => res.send(bugs))
     .catch((err) => {
       loggerService.error('Cannot get bugs', err)
@@ -28,20 +44,41 @@ app.get('/api/bug', (req, res) => {
     })
 })
 
-app.get('/api/bug/save', (req, res) => {
+// Add Car (CREATE)
+app.post('/api/bug', (req, res) => {
   const bugToSave = {
-    _id: req.query._id,
-    title: req.query.title,
-    description: req.query.description,
-    severity: req.query.severity,
+    title: req.body.title,
+    description: req.body.description,
+    severity: req.body.severity,
     createdAt: new Date(),
+    labels: req.body.labels,
   }
 
   bugService
     .save(bugToSave)
     .then((bug) => res.send(bug))
     .catch((err) => {
-      loggerService.error('Cannot save bug')
+      loggerService.error('Cannot save bug', err)
+      res.status(400).send('Cannot save bug')
+    })
+})
+
+// Edit Bug (UPDATE)
+app.put('/api/bug', (req, res) => {
+  const bugToSave = {
+    _id: req.body._id,
+    title: req.body.title,
+    description: req.body.description,
+    severity: req.body.severity,
+    createdAt: new Date(),
+    labels: req.body.labels,
+  }
+
+  bugService
+    .save(bugToSave)
+    .then((bug) => res.send(bug))
+    .catch((err) => {
+      loggerService.error('Cannot save bug', err)
       res.status(400).send('Cannot save bug')
     })
 })
@@ -73,7 +110,7 @@ app.get('/api/bug/:id', (req, res) => {
     })
 })
 
-app.get('/api/bug/:id/remove', (req, res) => {
+app.delete('/api/bug/:id/remove', (req, res) => {
   const bugId = req.params.id
   bugService
     .remove(bugId)
