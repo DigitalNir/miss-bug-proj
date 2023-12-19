@@ -1,19 +1,5 @@
 [
   {
-    "_id": "h04H4",
-    "title": "bugggg",
-    "description": "3",
-    "severity": "3",
-    "createdAt": "2023-12-19T00:09:24.426Z"
-  },
-  {
-    "_id": "PJHgE",
-    "title": "moshe",
-    "description": "ssd",
-    "severity": "33",
-    "createdAt": "2023-12-19T00:08:40.496Z"
-  },
-  {
     "_id": "def456",
     "title": "Login page not loading",
     "description": "The login page remains blank on initial load for some users.",
@@ -28,11 +14,18 @@
     "createdAt": 1545110362754
   },
   {
+    "_id": "mno345",
+    "title": "User profile image upload error",
+    "description": "Uploading a profile image fails intermittently for some users.",
+    "severity": 3,
+    "createdAt": 1546111363854
+  },
+  {
     "_id": "opq678",
     "title": "Search function returns incorrect results",
     "description": "The search feature provides irrelevant results when querying with specific keywords.",
-    "severity": "5",
-    "createdAt": "2023-12-19T00:03:25.909Z"
+    "severity": 2,
+    "createdAt": 1547102464954
   },
   {
     "_id": "rst910",
@@ -45,8 +38,8 @@
     "_id": "uvw111",
     "title": "Mobile app crashes on startup",
     "description": "The mobile application crashes immediately after launch on some older Android devices.",
-    "severity": "3333",
-    "createdAt": "2023-12-19T00:07:34.864Z"
+    "severity": 3,
+    "createdAt": 1549104665154
   },
   {
     "_id": "xyz222",
