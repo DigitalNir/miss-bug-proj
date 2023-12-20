@@ -42,6 +42,10 @@ function getEmptyBug(title = '', description = '', severity = 0) {
     description,
     severity,
     createdAt: Date.now(),
+    creator: {
+      _id,
+      fullname,
+    },
     labels: [],
   }
 }

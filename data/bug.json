@@ -1,11 +1,29 @@
 [
   {
-    "title": "Updated Email Issue",
-    "description": "Updated description",
-    "severity": "3",
-    "createdAt": "2023-12-19T20:53:17.975Z",
-    "labels": ["Communication", "High Priority"],
-    "_id": "vVyzY"
+    "title": "New Bug2 of user 101",
+    "description": "Bug description",
+    "severity": 3,
+    "createdAt": "2023-12-20T21:41:34.575Z",
+    "creator": {
+      "_id": "u101",
+      "fullname": "User One",
+      "isAdmin": false
+    },
+    "labels": ["New", "Urgent"],
+    "_id": "R55LH"
+  },
+  {
+    "title": "New Bug of user 101",
+    "description": "Bug description",
+    "severity": 3,
+    "createdAt": "2023-12-20T21:40:58.908Z",
+    "creator": {
+      "_id": "u101",
+      "fullname": "User One",
+      "isAdmin": false
+    },
+    "labels": ["New", "Urgent"],
+    "_id": "UVfk4"
   },
   {
     "_id": "h04H4",
@@ -57,10 +75,26 @@
   },
   {
     "_id": "xyz222",
-    "title": "Inconsistent UI rendering in the dashboard",
-    "description": "Users experience inconsistent UI elements in the dashboard view, particularly in the graphs section.",
-    "severity": 2,
-    "createdAt": 1550105765254,
-    "labels": ["Dashboard", "UI/UX"]
+    "title": "Update3333d Bug Title",
+    "description": "Updated description",
+    "severity": 4,
+    "createdAt": "2023-12-20T22:41:43.385Z",
+    "labels": ["Updated", "Critical"],
+    "creator": {
+      "_id": "u101",
+      "fullname": "User One"
+    }
+  },
+  {
+    "title": "Updated Email Issue",
+    "description": "Updated description",
+    "severity": "3",
+    "createdAt": "2023-12-19T20:53:17.975Z",
+    "labels": ["Communication", "High Priority"],
+    "_id": "vVyzY",
+    "creator": {
+      "_id": "u103",
+      "fullname": "Creator One"
+    }
   }
 ]

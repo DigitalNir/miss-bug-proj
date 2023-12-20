@@ -1,0 +1,30 @@
+[
+  {
+    "_id": "u101",
+    "username": "user1",
+    "password": "pass1",
+    "fullname": "User One",
+    "isAdmin": false
+  },
+  {
+    "_id": "u102",
+    "username": "user2",
+    "password": "pass2",
+    "fullname": "User Two",
+    "isAdmin": true
+  },
+  {
+    "username": "user",
+    "password": "pass",
+    "fullname": "User Name",
+    "isAdmin": false,
+    "_id": "oAjVt"
+  },
+  {
+    "_id": "u103",
+    "username": "creator1",
+    "password": "creatorPass",
+    "fullname": "Creator One",
+    "isAdmin": false
+  }
+]

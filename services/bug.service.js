@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { utilService } from './utils.service.js'
+import { utilService } from './util.service.js'
 
 const PAGE_SIZE = 3
 export const bugService = {
@@ -44,21 +44,32 @@ function getById(bugId) {
   return Promise.resolve(bug)
 }
 
-function remove(bugId) {
+function remove(bugId, loggedinUser) {
   const bugIdx = bugs.findIndex((bug) => bug._id === bugId)
+  if (bugIdx === -1) return Promise.reject('No Such Bug')
+  const bug = bugs[bugIdx]
+  if (!loggedinUser.isAdmin && bug.creator._id !== loggedinUser._id)
+    return Promise.reject('Not your bug')
+
   bugs.splice(bugIdx, 1)
   return _saveBugsToFile()
 }
 
-function save(bug) {
+function save(bug, loggedinUser) {
   if (bug._id) {
-    const bugIdx = bugs.findIndex((currBug) => currBug._id === bug._id)
-    bugs[bugIdx] = bug
+    const existingBug = bugs.find((currBug) => currBug._id === bug._id)
+    if (!existingBug) {
+      return Promise.reject('Bug not found')
+    }
+    if (!loggedinUser.isAdmin && existingBug.creator._id !== loggedinUser._id) {
+      return Promise.reject('Not your bug')
+    }
+    Object.assign(existingBug, bug)
   } else {
     bug._id = utilService.makeId()
+    bug.creator = loggedinUser
     bugs.unshift(bug)
   }
-
   return _saveBugsToFile().then(() => bug)
 }
 
