@@ -1,18 +1,26 @@
+const { Link, useSearchParams } = ReactRouterDOM
+const { useState, useEffect, useRef } = React
+
 import { bugService } from '../services/bug.service.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { BugList } from '../cmps/BugList.jsx'
-
-const { useState, useEffect } = React
+import { BugFilter } from '../cmps/BugFilter.jsx'
+import { utilService } from '../services/util.service.js'
 
 export function BugIndex() {
   const [bugs, setBugs] = useState(null)
+  const [filterBy, setFilterBy] = useState(bugService.getDefaultBugFilter())
+  const debounceOnSetFilter = useRef(utilService.debounce(onSetFilter, 500))
 
   useEffect(() => {
     loadBugs()
-  }, [])
+  }, [filterBy])
 
   function loadBugs() {
-    bugService.query().then(setBugs)
+    bugService
+      .query(filterBy)
+      .then((bugs) => setBugs(bugs))
+      .catch((err) => console.log('err:', err))
   }
 
   function onRemoveBug(bugId) {
@@ -20,14 +28,45 @@ export function BugIndex() {
       .remove(bugId)
       .then(() => {
         console.log('Deleted Succesfully!')
-        const bugsToUpdate = bugs.filter((bug) => bug._id !== bugId)
-        setBugs(bugsToUpdate)
-        showSuccessMsg('Bug removed')
+        setBugs((prevBugs) => {
+          return prevBugs.filter((bug) => bug._id !== bugId)
+        })
+        showSuccessMsg(`Bug removed ${bugId}`)
       })
       .catch((err) => {
         console.log('Error from onRemoveBug ->', err)
         showErrorMsg('Cannot remove bug')
       })
+  }
+
+  function onSetFilter(filterBy) {
+    setFilterBy((prevFilter) => ({
+      ...prevFilter,
+      ...filterBy,
+      pageIdx: isUndefined(prevFilter.pageIdx) ? undefined : 0,
+    }))
+  }
+
+  function onChangePageIdx(diff) {
+    if (isUndefined(filterBy.pageIdx)) return
+    setFilterBy((prevFilter) => {
+      let newPageIdx = prevFilter.pageIdx + diff
+      if (newPageIdx < 0) newPageIdx = 0
+      return { ...prevFilter, pageIdx: newPageIdx }
+    })
+  }
+
+  function onTogglePagination() {
+    setFilterBy((prevFilter) => {
+      return {
+        ...prevFilter,
+        pageIdx: isUndefined(prevFilter.pageIdx) ? 0 : undefined,
+      }
+    })
+  }
+
+  function isUndefined(value) {
+    return value === undefined
   }
 
   function onAddBug() {
@@ -49,32 +88,24 @@ export function BugIndex() {
       })
   }
 
-  function onEditBug(bug) {
-    const severity = +prompt('New severity?')
-    const bugToSave = { ...bug, severity }
-    bugService
-      .save(bugToSave)
-      .then((savedBug) => {
-        console.log('Updated Bug:', savedBug)
-        const bugsToUpdate = bugs.map((currBug) =>
-          currBug._id === savedBug._id ? savedBug : currBug
-        )
-        setBugs(bugsToUpdate)
-        showSuccessMsg('Bug updated')
-      })
-      .catch((err) => {
-        console.log('Error from onEditBug ->', err)
-        showErrorMsg('Cannot update bug')
-      })
-  }
+  if (!bugs) return <div>Loading...</div>
+  const { title, severity, labels, pageIdx } = filterBy
 
   return (
-    <main>
+    <section className="bug-index main-layout full">
       <h3>Bugs App</h3>
-      <main>
-        <button onClick={onAddBug}>Add Bug ⛐</button>
-        <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />
-      </main>
-    </main>
+      <section className="pagination">
+        <button onClick={() => onChangePageIdx(1)}>+</button>
+        {pageIdx + 1 || 'No Pagination'}
+        <button onClick={() => onChangePageIdx(-1)}>-</button>
+        <button onClick={onTogglePagination}>Toggle pagination</button>
+      </section>
+      <BugFilter
+        filterBy={{ title, severity, labels }}
+        onSetFilter={debounceOnSetFilter.current}
+      />
+      <Link to="/car/edit">Add Car</Link>
+      <BugList bugs={bugs} onRemoveBug={onRemoveBug} />
+    </section>
   )
 }
