@@ -1,4 +1,6 @@
 import express from 'express'
+import path from 'path'
+
 import { bugService } from './services/bug.service.js'
 import { loggerService } from './services/logger.service.js'
 import cookieParser from 'cookie-parser'
@@ -18,6 +20,7 @@ app.listen(port, () =>
 )
 
 // Express Routing:
+
 // Get Bugs (READ)
 app.get('/api/bug', (req, res) => {
   const filterBy = {
@@ -119,4 +122,8 @@ app.delete('/api/bug/:id/remove', (req, res) => {
       loggerService.error('Cannot remove bug', err)
       res.status(400).send('Cannot get bug')
     })
+})
+
+app.get('/**', (req, res) => {
+  res.sendFile(path.resolve('public/index.html'))
 })
