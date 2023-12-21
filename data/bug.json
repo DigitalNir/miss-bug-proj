@@ -9,7 +9,10 @@
       "fullname": "User One",
       "isAdmin": false
     },
-    "labels": ["New", "Urgent"],
+    "labels": [
+      "New",
+      "Urgent"
+    ],
     "_id": "R55LH"
   },
   {
@@ -22,7 +25,10 @@
       "fullname": "User One",
       "isAdmin": false
     },
-    "labels": ["New", "Urgent"],
+    "labels": [
+      "New",
+      "Urgent"
+    ],
     "_id": "UVfk4"
   },
   {
@@ -31,7 +37,10 @@
     "description": "3",
     "severity": "3",
     "createdAt": "2023-12-19T00:09:24.426Z",
-    "labels": ["General", "Low Priority"]
+    "labels": [
+      "General",
+      "Low Priority"
+    ]
   },
   {
     "_id": "PJHgE",
@@ -39,7 +48,10 @@
     "description": "ssd",
     "severity": "33",
     "createdAt": "2023-12-19T00:08:40.496Z",
-    "labels": ["UI", "Critical"]
+    "labels": [
+      "UI",
+      "Critical"
+    ]
   },
   {
     "_id": "jkl012",
@@ -47,7 +59,10 @@
     "description": "Users are not receiving email notifications for updates on their submitted bugs.",
     "severity": 2,
     "createdAt": 1545110362754,
-    "labels": ["Notifications", "User Experience"]
+    "labels": [
+      "Notifications",
+      "User Experience"
+    ]
   },
   {
     "_id": "opq678",
@@ -55,7 +70,10 @@
     "description": "The search feature provides irrelevant results when querying with specific keywords.",
     "severity": "5",
     "createdAt": "2023-12-19T00:03:25.909Z",
-    "labels": ["Search", "Functionality"]
+    "labels": [
+      "Search",
+      "Functionality"
+    ]
   },
   {
     "_id": "rst910",
@@ -63,7 +81,10 @@
     "description": "The data processing module causes a significant memory leak after extended use.",
     "severity": 1,
     "createdAt": 1548103565054,
-    "labels": ["Performance", "Memory Management"]
+    "labels": [
+      "Performance",
+      "Memory Management"
+    ]
   },
   {
     "_id": "uvw111",
@@ -71,7 +92,11 @@
     "description": "The mobile application crashes immediately after launch on some older Android devices.",
     "severity": "3333",
     "createdAt": "2023-12-19T00:07:34.864Z",
-    "labels": ["Mobile", "Stability", "Dashboard"]
+    "labels": [
+      "Mobile",
+      "Stability",
+      "Dashboard"
+    ]
   },
   {
     "_id": "xyz222",
@@ -79,7 +104,10 @@
     "description": "Updated description",
     "severity": 4,
     "createdAt": "2023-12-20T22:41:43.385Z",
-    "labels": ["Updated", "Critical"],
+    "labels": [
+      "Updated",
+      "Critical"
+    ],
     "creator": {
       "_id": "u101",
       "fullname": "User One"
@@ -90,7 +118,10 @@
     "description": "Updated description",
     "severity": "3",
     "createdAt": "2023-12-19T20:53:17.975Z",
-    "labels": ["Communication", "High Priority"],
+    "labels": [
+      "Communication",
+      "High Priority"
+    ],
     "_id": "vVyzY",
     "creator": {
       "_id": "u103",

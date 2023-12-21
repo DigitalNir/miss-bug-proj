@@ -8,7 +8,7 @@ const BASE_URL = '/api/bug/'
 
 export const bugService = {
   query,
-  getById: get,
+  get,
   save,
   remove,
   getDefaultBugFilter,
@@ -42,10 +42,10 @@ function getEmptyBug(title = '', description = '', severity = 0) {
     description,
     severity,
     createdAt: Date.now(),
-    creator: {
-      _id,
-      fullname,
-    },
+    // creator: {
+    //   _id,
+    //   fullname,
+    // },
     labels: [],
   }
 }

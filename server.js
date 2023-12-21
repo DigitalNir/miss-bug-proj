@@ -48,7 +48,7 @@ app.get('/api/bug', (req, res) => {
     })
 })
 
-// Add Car (CREATE)
+// Add Bug (CREATE)
 app.post('/api/bug', (req, res) => {
   console.log('POST /api/bug request body:', req.body)
   const loggedinUser = userService.validateToken(req.cookies.loginToken)
@@ -59,10 +59,7 @@ app.post('/api/bug', (req, res) => {
     description: req.body.description,
     severity: req.body.severity,
     createdAt: new Date(),
-    creator: {
-      _id: req.body.creator._id,
-      fullname: req.body.creator.fullname,
-    },
+
     labels: req.body.labels,
   }
 
@@ -87,10 +84,7 @@ app.put('/api/bug', (req, res) => {
     description: req.body.description,
     severity: req.body.severity,
     createdAt: new Date(),
-    creator: {
-      _id: req.body.creator._id,
-      fullname: req.body.creator.fullname,
-    },
+
     labels: req.body.labels,
   }
 
@@ -130,7 +124,7 @@ app.get('/api/bug/:id', (req, res) => {
     })
 })
 
-app.delete('/api/bug/:id/remove', (req, res) => {
+app.delete('/api/bug/:id', (req, res) => {
   console.log('DELETE /api/bug/:id/remove request params:', req.params)
   const loggedinUser = userService.validateToken(req.cookies.loginToken)
   if (!loggedinUser) res.status(401).send('Cannot remove bug')

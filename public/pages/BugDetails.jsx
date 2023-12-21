@@ -10,7 +10,7 @@ export function BugDetails() {
 
   useEffect(() => {
     bugService
-      .getById(bugId)
+      .get(bugId)
       .then((bug) => {
         setBug(bug)
       })

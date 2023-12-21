@@ -104,7 +104,7 @@ export function BugIndex() {
         filterBy={{ title, severity, labels }}
         onSetFilter={debounceOnSetFilter.current}
       />
-      <Link to="/car/edit">Add Car</Link>
+      <Link to="/bug/edit">Add Bug</Link>
       <BugList bugs={bugs} onRemoveBug={onRemoveBug} />
     </section>
   )

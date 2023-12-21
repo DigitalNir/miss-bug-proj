@@ -26,5 +26,11 @@
     "password": "creatorPass",
     "fullname": "Creator One",
     "isAdmin": false
+  },
+  {
+    "username": "moshiko",
+    "password": "avi",
+    "fullname": "123",
+    "_id": "TWqw1"
   }
 ]
